@@ -1,12 +1,17 @@
 import { useAuth } from "@hooks/useAuth";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 interface Props {
   to: string;
-  children: React.ReactNode;
+  page: "admin" | "agent";
 }
 
-export function Private({ children, to }: Props) {
-  const { currentUser } = useAuth();
-  return currentUser === null ? <Navigate to={to} replace={true} /> : children;
+export function Private({ to, page = "admin" }: Props) {
+  const { admin, agent } = useAuth();
+
+  if (page === "agent") {
+    return agent === null ? <Navigate to={to} replace={true} /> : <Outlet />;
+  }
+
+  return admin === null ? <Navigate to={to} replace={true} /> : <Outlet />;
 }
