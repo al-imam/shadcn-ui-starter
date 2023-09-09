@@ -10,7 +10,8 @@
       "@/*": ["./src/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@context/*": ["./src/context/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@custom/*": ["./src/components/custom/*"]
     },
 
     /* Bundler mode */

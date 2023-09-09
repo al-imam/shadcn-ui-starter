@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@context/auth-context";
+import { NotFound } from "@custom/not-found/not-found";
 import { Private } from "@routes/private";
 import { Public } from "@routes/public";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -30,6 +31,7 @@ function App() {
                 <Route index path="*" element={<Navigate to="/auth/admin/login" />} />
               </Route>
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
       </AuthProvider>
