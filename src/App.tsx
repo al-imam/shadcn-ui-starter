@@ -1,19 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { ThemeProvider, useTheme } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "@context/auth-context";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light">
-      <div>
-        <MyButton />
-      </div>
-    </ThemeProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider defaultTheme="light">Hello</ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
-}
-
-function MyButton() {
-  const { setTheme, theme } = useTheme();
-  return <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>{theme}</Button>;
 }
 
 export default App;
